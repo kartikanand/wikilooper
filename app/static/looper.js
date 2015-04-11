@@ -1,3 +1,5 @@
+var list = null;
+
 function removeElementsfromList() {
     var list = document.getElementById('wiki-loop-list'),
         items = Array.prototype.slice.call(list.childNodes),
@@ -12,33 +14,39 @@ function wikiLoop(link, first) {
     var xmlHttp = null;
     link = link || document.getElementById("wiki-form-search-box").value;
     
-    // For first time pass value of first as 1, so that server is able to reset link-list
+    // Check for first-time to create new list
     first = first || 1;
 
     if (first === 1) {
         removeElementsfromList();
         addToList(link);
-    }
-    else {
+        list = [link];
+    } else {
+        if (link == "Philosophy") {
+            addToList("Philosophy");
+            addToList("STOP");
+            return;
+        }
+        
+        if (list.indexOf(link) > -1) {
+            addToList("Loop Found");
+            return;
+        }
+        
         addToList(link);
+        list[list.length] = link;
     }
     
     xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function () {
         if (xmlHttp.readyState === 4) {
             if (xmlHttp.status === 200) {
-                var nextLink = xmlHttp.responseText;
-                if (nextLink !== "--STOP--" && nextLink !== "--Loop Found--" && nextLink !== "--Error Try Again--") {
-                    wikiLoop(nextLink, 2);
-                }
-                else {
-                    addToList(nextLink);
-                }
+                wikiLoop(xmlHttp.responseText, 2);
             }
         }
     };
         
-    xmlHttp.open("GET", "/loop?first=" + first + "&link=" + link, true);
+    xmlHttp.open("GET", "/loop?link=" + link, true);
     xmlHttp.send(null);
 }
 
