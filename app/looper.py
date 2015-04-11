@@ -2,10 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 
 def getNextLink(link):
-
-    if link == "Philosophy":
-        return ""
-
     wiki_url = "http://en.wikipedia.org/wiki/"
 
     r = requests.get(wiki_url+link)

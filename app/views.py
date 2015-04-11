@@ -15,14 +15,17 @@ def loop_request():
     first = request.args.get('first', 0, type=int)
 
     if first == 0:
-        return ""
+        return "--Error Try Again--"
     elif first == 1:
         link_list = []
+
+    if link == "Philosophy":
+        return "--STOP--"
 
     next_link = getNextLink(link.strip())
     
     if link_list and next_link in link_list:
-        return ""
+        return "--Loop Found--"
     else:
         link_list.append(next_link)
         return next_link

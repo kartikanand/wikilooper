@@ -1,0 +1,76 @@
+@import url(http://fonts.googleapis.com/css?family=Poiret+One);
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+    font-size: 100%;
+    background-color: #171717;
+}
+
+.heading {
+    color: #fbc93d;
+    font-weight: bold;
+    padding: 0;
+    font-family: 'Poiret One';
+    text-align: center;
+}
+
+h1 {
+    margin-top: 1em;
+    margin-bottom: 0em;
+}
+
+h2 {
+    margin-top: 0.5em;
+}
+
+#wiki-form-label {
+    color: #ECECEC;
+    font-family: 'Raleway', sans-serif;
+}
+
+#wiki-form-container {
+    max-width: 710px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#wiki-form-label {
+    font-size: 1.5em;
+}
+
+#wiki-form-button {
+    margin-top: 0.5em;
+    font-size: 1.5em;
+    background-color: white;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 5px;
+    padding-top: 0.25em 0.5em;
+}
+
+#wiki-form-search-box {
+    margin-top: 0.5em;
+    font-size: 1.5em;
+    font-family: 'Raleway', sans-serif;
+}
+
+#wiki-loop-container {
+    max-width: 710px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#wiki-loop-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.wiki-loop-list-item {
+    color: #fb4f4f;
+    font-size: 1.5em;
+    font-family: 'Raleway', sans-serif;
+}
+
+.active {
+    opacity: 0.5;
+}

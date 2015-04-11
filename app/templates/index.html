@@ -1,18 +1,21 @@
 <html>
     <head>
         <script type="text/javascript" src="{{ url_for('static', filename='looper.js') }}"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
         <title>WikiLooper</title>
     </head>
     
     <body>
-        <h1>WikiLooper</h1>
-        <h2>All paths lead to Philosophy (Or Don't)</h2>
+        <h1 class="heading">WikiLooper</h1>
+        <h2 class="heading">All paths lead to Philosophy (Or Don't)</h2>
         
         <div id="wiki-form-container">
             <form action="javascript:void(0);" id="wiki-form" onsubmit="wikiLoop()">
-                <label form="wiki-form" id="seach-box-label" for="search-box">Starting article</label>
-                <input form="wiki-form" id="search-box" type="text"/>
-                <button form="wiki-form" type="submit">Start</button>
+                <label form="wiki-form" id="wiki-form-label" for="search-box">Starting article</label>
+                <br>
+                <input form="wiki-form" id="wiki-form-search-box" type="text"/>
+                <br>
+                <button class="button" form="wiki-form" id="wiki-form-button" type="submit">Start</button>
             </form>
         </div>
         <div id="wiki-loop-container">
