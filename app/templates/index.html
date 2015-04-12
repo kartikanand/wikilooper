@@ -18,7 +18,13 @@
                 <input form="wiki-form" id="wiki-form-search-box" type="text"/>
                 <br>
                 <button class="button" form="wiki-form" id="wiki-form-button" type="submit">Start</button>
+                <button class="button" form="wiki-form" onclick="showAbout(); return false;">About</button>
             </form>
+        </div>
+        <div id="wiki-loop-about">
+            <p>
+                Clicking on the first link in the main text of a Wikipedia article, and then repeating the process for subsequent articles, usually eventually gets one to the Philosophy article. Unless there is an article with no wikilinks or with links to pages that do not exist, or gets stuck in loop. By entering the first article, this website will take you through the links untill it reaches Philosophy or gets stuck in a loop.
+            </p>
         </div>
         <div id="wiki-loop-container">
             <ul id="wiki-loop-list">

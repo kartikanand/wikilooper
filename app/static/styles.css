@@ -29,6 +29,12 @@ h2 {
     font-family: 'Raleway', sans-serif;
 }
 
+#wiki-loop-about {
+    color: #fbc93d;
+    font-family: 'Raleway', sans-serif;
+    display: none;
+}
+
 #wiki-form-container {
     max-width: 710px;
     margin: 0 auto;
@@ -39,13 +45,14 @@ h2 {
     font-size: 1.5em;
 }
 
-#wiki-form-button {
-    margin-top: 0.5em;
+.button {
+    margin: 0.5em;
     font-size: 1.5em;
     background-color: white;
     font-family: 'Open Sans', sans-serif;
     border-radius: 5px;
-    padding-top: 0.25em;
+    padding-top: 0.15em;
+    padding-bottom: 0.15em;
 }
 
 #wiki-form-search-box {
@@ -65,12 +72,14 @@ h2 {
     padding-left: 0;
 }
 
-.wiki-loop-list-item {
+.active {
+    opacity: 0.5;
+}
+
+a, a:visited {
+    text-decoration: none;
     color: #fb4f4f;
     font-size: 1.5em;
     font-family: 'Raleway', sans-serif;
 }
-
-.active {
-    opacity: 0.5;
-}
+    

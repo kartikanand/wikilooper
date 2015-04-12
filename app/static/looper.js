@@ -14,10 +14,17 @@ function wikiLoop(link, first) {
     var xmlHttp = null;
     link = link || document.getElementById("wiki-form-search-box").value;
     
+    if (link == "") {
+        removeElementsfromList();
+        addToList("Enter Something!");
+        return;
+    }
+    
     // Check for first-time to create new list
     first = first || 1;
 
     if (first === 1) {
+        hideAbout();
         removeElementsfromList();
         addToList(link);
         list = [link];
@@ -30,6 +37,7 @@ function wikiLoop(link, first) {
         
         if (list.indexOf(link) > -1) {
             addToList("Loop Found");
+            addToList("Between " + list[list.length - 1] + " and " + link);
             return;
         }
         
@@ -50,6 +58,16 @@ function wikiLoop(link, first) {
     xmlHttp.send(null);
 }
 
+function showAbout() {
+    var about = document.getElementById("wiki-loop-about");
+    about.style.display = "block";
+}
+
+function hideAbout() {
+    var about = document.getElementById("wiki-loop-about");
+    about.style.display = "none";
+}
+
 function removeClassActive(list) {
     var items = Array.prototype.slice.call(list.childNodes);
 
@@ -62,12 +80,15 @@ function removeClassActive(list) {
 function addToList(nextLink) {
     if (nextLink) {
         var list = document.getElementById("wiki-loop-list"),
-            entry = document.createElement("li");
+            entry = document.createElement("li"),
+            anchor = document.createElement("a");
         
         removeClassActive(list);
         
-        entry.appendChild(document.createTextNode(nextLink));
+        anchor.appendChild(document.createTextNode(nextLink));
+        anchor.setAttribute('href', 'http://en.wikipedia.org/wiki/' + nextLink);
         entry.className = "wiki-loop-list-item active";
+        entry.appendChild(anchor);
         list.appendChild(entry);
     }
 }
