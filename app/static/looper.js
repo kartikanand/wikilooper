@@ -1,4 +1,5 @@
 var list = null;
+var running = false;
 
 function removeElementsfromList() {
     var list = document.getElementById('wiki-loop-list'),
@@ -13,6 +14,12 @@ function removeElementsfromList() {
 function wikiLoop(first, link) {
     if (first === 1) {
         link = link || document.getElementById("wiki-form-search-box").value;
+        
+        if (running === true) {
+            return;
+        }
+        
+        running = true;
     }
     
     if (first === 1) {
@@ -20,6 +27,7 @@ function wikiLoop(first, link) {
             removeElementsfromList();
             addToList("Enter Something!");
             
+            running = false;
             return;
         }
         
@@ -31,18 +39,21 @@ function wikiLoop(first, link) {
         if (link == "--ERROR1--") {
             addToList("Not a valid Wiki Link");
             
+            running = false;
             return;
         }
         
         if (link == "--ERROR2--") {
             addToList("Error 2");
             
+            running = false;
             return;
         }
         
         if (link == "--ERROR3--") {
             addToList("Error 3");
             
+            running = false;
             return;
         }
         
@@ -50,6 +61,7 @@ function wikiLoop(first, link) {
             addToList("Philosophy");
             addToList("STOP");
             
+            running = false;
             return;
         }
         
@@ -57,6 +69,7 @@ function wikiLoop(first, link) {
             addToList("Loop Found");
             addToList("Between " + list[list.length - 1] + " and " + link);
             
+            running = false;
             return;
         }
         
