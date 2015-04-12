@@ -12,17 +12,24 @@ function removeElementsfromList() {
 
 function wikiLoop(link, first) {
     var xmlHttp = null;
-    link = link || document.getElementById("wiki-form-search-box").value;
-    
+
+    // Check for first-time to create new list
+    first = first || 1;
+    if (first === 1) {
+        link = link || document.getElementById("wiki-form-search-box").value;
+    }
+
     if (link == "") {
+        if (first === 1) {
         removeElementsfromList();
         addToList("Enter Something!");
         return;
+        } else {
+            addToList("Not a valid Wiki Link");
+            return;
+        }
     }
     
-    // Check for first-time to create new list
-    first = first || 1;
-
     if (first === 1) {
         hideAbout();
         removeElementsfromList();

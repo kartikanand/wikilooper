@@ -6,7 +6,7 @@ def getNextLink(link):
 
     r = requests.get(wiki_url+link)
     if r.status_code != 200:
-        print(args + "Not a valid wiki link")
+        print(link + "Not a valid wiki link")
         return ""
 
     data = r.text
