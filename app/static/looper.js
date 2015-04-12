@@ -10,41 +10,53 @@ function removeElementsfromList() {
     }
 }
 
-function wikiLoop(link, first) {
-    var xmlHttp = null;
-
-    // Check for first-time to create new list
-    first = first || 1;
+function wikiLoop(first, link) {
     if (first === 1) {
         link = link || document.getElementById("wiki-form-search-box").value;
     }
-
-    if (link == "") {
-        if (first === 1) {
-        removeElementsfromList();
-        addToList("Enter Something!");
-        return;
-        } else {
-            addToList("Not a valid Wiki Link");
-            return;
-        }
-    }
     
     if (first === 1) {
+        if (link == "") {
+            removeElementsfromList();
+            addToList("Enter Something!");
+            
+            return;
+        }
+        
         hideAbout();
         removeElementsfromList();
         addToList(link);
         list = [link];
     } else {
+        if (link == "--ERROR1--") {
+            addToList("Not a valid Wiki Link");
+            
+            return;
+        }
+        
+        if (link == "--ERROR2--") {
+            addToList("Error 2");
+            
+            return;
+        }
+        
+        if (link == "--ERROR3--") {
+            addToList("Error 3");
+            
+            return;
+        }
+        
         if (link == "Philosophy") {
             addToList("Philosophy");
             addToList("STOP");
+            
             return;
         }
         
         if (list.indexOf(link) > -1) {
             addToList("Loop Found");
             addToList("Between " + list[list.length - 1] + " and " + link);
+            
             return;
         }
         
@@ -52,11 +64,11 @@ function wikiLoop(link, first) {
         list[list.length] = link;
     }
     
-    xmlHttp = new XMLHttpRequest();
+    var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function () {
         if (xmlHttp.readyState === 4) {
             if (xmlHttp.status === 200) {
-                wikiLoop(xmlHttp.responseText, 2);
+                wikiLoop(2, xmlHttp.responseText);
             }
         }
     };
