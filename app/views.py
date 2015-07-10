@@ -1,6 +1,6 @@
 from app import app
-from flask import render_template, request, g
-from looper import getNextLink
+from flask import render_template, request
+from .looper import getNextLink
 
 @app.route('/')
 def index_page():

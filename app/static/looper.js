@@ -13,24 +13,21 @@ function removeElementsfromList() {
 
 function wikiLoop(first, link) {
     if (first === 1) {
-        link = link || document.getElementById("wiki-form-search-box").value;
         
         if (running === true) {
             return;
         }
-        
-        running = true;
-    }
-    
-    if (first === 1) {
+
+        link = link || document.getElementById("wiki-form-search-box").value;
         if (link == "") {
             removeElementsfromList();
             addToList("Enter Something!");
             
-            running = false;
             return;
         }
         
+        running = true;
+
         hideAbout();
         removeElementsfromList();
         addToList(link);
