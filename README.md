@@ -8,6 +8,9 @@ Wikilooper web version
 Clicking on the first link in the main text of a Wikipedia article, and then repeating the process for subsequent articles, one would  eventually get to the Philosophy article. 
 Unless there is an article with no wikilinks or with links to pages that do not exist, or gets stuck in a loop. By entering the first article, wikilooper will take you through the links one would encounter until it reaches Philosophy or gets stuck in a loop.
 
+### XKCD
+Relevant XKCD article -> [Extended Mind](http://xkcd.com/903/)
+
 ### Requirements
 - beautifulsoup4==4.3.2
 - Flask==0.10.1
