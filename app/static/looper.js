@@ -98,11 +98,6 @@ function toggleAbout() {
     }
 }
 
-function showAbout() {
-    var about = document.getElementById("wiki-loop-about");
-    about.style.display = "block";
-}
-
 function hideAbout() {
     var about = document.getElementById("wiki-loop-about");
     about.style.display = "none";
