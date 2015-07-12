@@ -2,35 +2,35 @@
 <html>
     <head>
         <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
-        <script type="text/javascript" src="{{ url_for('static', filename='looper.js') }}"></script>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.min.css') }}" />
         <title>WikiLooper</title>
     </head>
     <body>
         <h1 class="heading">WikiLooper</h1>
         <h2 class="heading">All paths lead to Philosophy (Or Don't)</h2>
-        
-        <div id="wiki-form-container">
-            <form action="javascript:void(0);" id="wiki-form" onsubmit="wikiLoop(1)">
-                <label form="wiki-form" id="wiki-form-label" for="search-box">Starting article</label>
+
+        <div class="container">
+            <form action="javascript:void(0);" onsubmit="wikiLoop(1)">
+                <label for="wiki-form-search-box">Starting article</label>
                 <br>
-                <input form="wiki-form" id="wiki-form-search-box" type="text"/>
+                <input id="wiki-form-search-box" type="text"/>
                 <br>
-                <button class="button" form="wiki-form" id="wiki-form-button" type="submit">Start</button>
-                <button class="button" form="wiki-form" onclick="showAbout(); return false;">About</button>
+                <button type="submit">Start</button>
+                <button onclick="toggleAbout(); return false;">About</button>
             </form>
         </div>
-        
+
         <div id="wiki-loop-about">
             <p>
                 Clicking on the first link in the main text of a Wikipedia article, and then repeating the process for subsequent articles, one would  eventually get to the Philosophy article. Unless there is an article with no wikilinks or with links to pages that do not exist, or gets stuck in a loop. By entering the first article, this website will take you through the links one would encounter until it reaches Philosophy or gets stuck in a loop.
             </p>
         </div>
         
-        <div id="wiki-loop-container">
+        <div class="container">
             <ul id="wiki-loop-list">
             </ul>
         </div>
         
+        <script type="text/javascript" src="{{ url_for('static', filename='looper.min.js') }}"></script>
     </body>
 </html>

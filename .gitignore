@@ -1,2 +1,4 @@
 *.pyc
-venv/
+venv
+.sass-cache/
+node_modules/

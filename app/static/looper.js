@@ -87,6 +87,17 @@ function wikiLoop(first, link) {
     xmlHttp.send(null);
 }
 
+function toggleAbout() {
+    var about = document.getElementById("wiki-loop-about");
+    var disp = about.style.display;
+    if (disp == "") {
+        about.style.display = "block";
+    }
+    else {
+        about.style.display = "";
+    }
+}
+
 function showAbout() {
     var about = document.getElementById("wiki-loop-about");
     about.style.display = "block";
@@ -116,7 +127,7 @@ function addToList(nextLink) {
         
         anchor.appendChild(document.createTextNode(nextLink));
         anchor.setAttribute('href', 'http://en.wikipedia.org/wiki/' + nextLink);
-        entry.className = "wiki-loop-list-item active";
+        entry.className = "wiki-loop-list-item big-font active";
         entry.appendChild(anchor);
         list.appendChild(entry);
     }
