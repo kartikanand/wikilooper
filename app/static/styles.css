@@ -14,9 +14,10 @@ body {
   max-width: 710px;
   margin: 0 auto;
   text-align: center; }
+  .container button, .container ul li, .container input, .container label {
+    font-size: 1.5em; }
   .container button {
     margin: 0.5em;
-    font-size: 1.5em;
     background-color: white;
     border-radius: 5px;
     padding-top: 0.15em;
@@ -25,24 +26,19 @@ body {
     list-style: none;
     padding-left: 0; }
   .container input {
-    font-size: 1.5em;
     margin-top: 0.5em; }
   .container label {
-    font-size: 1.5em;
     color: #ECECEC; }
 
 #wiki-loop-about {
   color: #FBC93D;
   display: none; }
 
-.active {
-  opacity: 0.5; }
-
-a {
+a, a:visited {
   text-decoration: none;
   color: #fb4f4f; }
-  a:visited {
-    text-decoration: none;
-    color: #fb4f4f; }
+
+.active {
+  opacity: 0.5; }
 
 /*# sourceMappingURL=styles.css.map */

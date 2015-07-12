@@ -21,9 +21,13 @@ body {
     margin: 0 auto;
     text-align: center;
 
-    button {
-        margin: 0.5em;
+    %font-size {
         font-size: 1.5em;
+    }
+
+    button {
+        @extend %font-size;
+        margin: 0.5em;
         background-color: white;
         border-radius: 5px;
         padding-top: 0.15em;
@@ -32,16 +36,20 @@ body {
 
     ul {
         list-style: none;
-        padding-left: 0;    
+        padding-left: 0;
+
+        li {
+            @extend %font-size;
+        }  
     }
 
     input {
-        font-size: 1.5em;
+        @extend %font-size;
         margin-top: 0.5em;
     }
 
     label {
-        font-size: 1.5em;
+        @extend %font-size;
         color: #ECECEC;
     }
 }
@@ -51,15 +59,14 @@ body {
     display: none;
 }
 
-.active {
-    opacity: 0.5;
-}
-
 a {
     text-decoration: none;
     color: #fb4f4f;
-   &:visited {
-        text-decoration: none;
-        color: #fb4f4f;
-   }
+    &:visited {
+        @extend a;
+    }
+}
+
+.active {
+    opacity: 0.5;
 }
