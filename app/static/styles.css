@@ -38,8 +38,11 @@ body {
 .active {
   opacity: 0.5; }
 
-a, a:visited {
+a {
   text-decoration: none;
   color: #fb4f4f; }
+  a:visited {
+    text-decoration: none;
+    color: #fb4f4f; }
 
 /*# sourceMappingURL=styles.css.map */
