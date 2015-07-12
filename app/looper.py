@@ -13,6 +13,8 @@ def getLinkInPara(para_list):
 
             if tag.name == 'a' and bracket == 0:
                 next_link = tag['href']
+                if '#' in next_link:
+                    continue
                 return next_link
     return None
 
