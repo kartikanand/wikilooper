@@ -1,3 +1,4 @@
+from __future__ import print_function
 import requests
 from bs4 import BeautifulSoup
 
@@ -56,7 +57,7 @@ def getNextLink(link):
             
     if next_link is not None:
         args = next_link.split("/")[-1]
-        print args
+        print(args)
         return args
     else:
         return "--ERROR3--"
