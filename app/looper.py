@@ -1,6 +1,7 @@
 from __future__ import print_function
 import requests
 from bs4 import BeautifulSoup
+from .utils import lru_cache
 
 def getLinkInPara(para_list):
     for para in para_list:
@@ -19,6 +20,7 @@ def getLinkInPara(para_list):
                 return next_link
     return None
 
+@lru_cache(maxsize=65536)
 def getNextLink(link):
     wiki_url = "http://en.wikipedia.org/wiki/"
 
