@@ -8,5 +8,9 @@ def index_page():
 
 @app.route('/loop')
 def loop_request():
-    link = request.args.get('link', '', type=str)
+    if "unicode" in __builtins__:
+        str_type = unicode
+    else:
+        str_type = str
+    link = request.args.get('link', '', type=str_type)
     return getNextLink(link.strip())
