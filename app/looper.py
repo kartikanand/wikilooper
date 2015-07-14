@@ -1,5 +1,9 @@
 from __future__ import print_function
 import requests
+try:
+    import urllib.parse as urllib
+except ImportError:
+    import urllib
 from bs4 import BeautifulSoup
 from .utils import lru_cache
 
@@ -53,5 +57,9 @@ def getNextLink(link):
             return "--ERROR2--"
 
     args = next_link.split("/")[-1]
-    print(args)
+    args = urllib.unquote(str(args))
+    try:
+        print(args)
+    except UnicodeEncodeError:
+        print("unprintable Unicode args")
     return args
