@@ -57,9 +57,5 @@ def getNextLink(link):
             return "--ERROR2--"
 
     args = next_link.split("/")[-1]
-    args = urllib.unquote(str(args))
-    try:
-        print(args)
-    except UnicodeEncodeError:
-        print("unprintable Unicode args")
+    args = urllib.unquote(args).encode('latin1').decode('utf-8')
     return args
