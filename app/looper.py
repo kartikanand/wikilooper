@@ -36,8 +36,11 @@ def getNextLink(link):
     data = r.text
     soup = BeautifulSoup(data)
     div = soup.find_all(id="mw-content-text")[0]
-
     para_list = [child for child in div.children if child.name == 'p']
+
+    if len(para_list) == 0:
+        div = div.find_all('div', class_="mw-parser-output")[0]
+        para_list = [child for child in div.children if child.name == 'p']
 
     next_link = getLinkInPara(para_list)
 
