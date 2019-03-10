@@ -54,7 +54,7 @@ function getNextLink(link, skips) {
             if (xmlHttp.status === 200) {
                 nextLink = xmlHttp.responseText;
                 // check if next link already exists in the list
-                if (list.indexOf(nextLink) > -1) {
+                if (nextLink == '' || list.indexOf(nextLink) > -1) {
                     getNextLink(link, skips + 1);
                 } else {
                     wikiLoop(nextLink);

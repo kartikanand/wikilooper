@@ -1,13 +1,14 @@
 from __future__ import print_function
 import requests
+import re
+
 try:
     import urllib.parse as urllib
 except ImportError:
     import urllib
+
 from bs4 import BeautifulSoup
 from .utils import lru_cache
-
-maxLoopCount = 10
 
 def getLinkInPara(para_list, skips):
     count = 0
@@ -25,12 +26,10 @@ def getLinkInPara(para_list, skips):
                 # get the next link instead
                 if skips:
                     skips -= 1
-                    print("hey")
                     continue
 
                 next_link = tag['href']
-                if '#' in next_link:
-                    continue
+                next_link = re.sub(r"#.*", "", next_link)
 
                 return next_link
 
