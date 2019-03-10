@@ -7,7 +7,10 @@ except ImportError:
 from bs4 import BeautifulSoup
 from .utils import lru_cache
 
-def getLinkInPara(para_list):
+maxLoopCount = 10
+
+def getLinkInPara(para_list, skips):
+    count = 0
     for para in para_list:
         bracket = 0
         for tag in para.children:
@@ -18,20 +21,29 @@ def getLinkInPara(para_list):
                     bracket -= 1
 
             if tag.name == 'a' and bracket == 0:
+                # if we've already found a skips
+                # get the next link instead
+                if skips:
+                    skips -= 1
+                    print("hey")
+                    continue
+
                 next_link = tag['href']
                 if '#' in next_link:
                     continue
+
                 return next_link
+
     return None
 
 @lru_cache(maxsize=65536)
-def getNextLink(link):
+def getNextLink(link, skips):
     wiki_url = "http://en.wikipedia.org/wiki/"
 
     r = requests.get(wiki_url + link)
     if r.status_code != 200:
         print(link + "Not a valid wiki link")
-        return "--ERROR1--"
+        return "--INVALID--"
 
     data = r.text
     soup = BeautifulSoup(data)
@@ -42,7 +54,7 @@ def getNextLink(link):
         div = div.find_all('div', class_="mw-parser-output")[0]
         para_list = [child for child in div.children if child.name == 'p']
 
-    next_link = getLinkInPara(para_list)
+    next_link = getLinkInPara(para_list, skips)
 
     if next_link is None:
         for child in div.children:
@@ -50,14 +62,14 @@ def getNextLink(link):
                 ul = child
                 break
         else:
-            return "--ERROR2--"
+            return "--ERROR--"
 
         try:
             next_link = ul.li.a['href']
             if next_link is None:  # this should never happen
-                return "--ERROR3--"
+                return "--ERROR--"
         except:
-            return "--ERROR2--"
+            return "--ERROR--"
 
     args = next_link.split("/")[-1]
     args = urllib.unquote(str(args))

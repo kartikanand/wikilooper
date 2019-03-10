@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.min.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
         <title>WikiLooper</title>
     </head>
     <body>
@@ -10,12 +10,12 @@
         <h2 class="heading">All paths lead to Philosophy (Or Don't)</h2>
 
         <div class="container">
-            <form action="javascript:void(0);" onsubmit="wikiLoop(1)">
+            <form>
                 <label for="wiki-form-search-box">Starting article</label>
                 <br>
                 <input id="wiki-form-search-box" type="text" placeholder="Computer, Python, etc.">
                 <br>
-                <button type="submit">Start</button>
+                <button type="button" id="js-start">Start</button>
                 <button onclick="toggleAbout(); return false;">About</button>
             </form>
         </div>
@@ -25,12 +25,12 @@
                 Clicking on the first link in the main text of a Wikipedia article, and then repeating the process for subsequent articles, one would  eventually get to the Philosophy article. Unless there is an article with no wikilinks or with links to pages that do not exist, or gets stuck in a loop. By entering the first article, this website will take you through the links one would encounter until it reaches Philosophy or gets stuck in a loop.
             </p>
         </div>
-        
+
         <div class="container">
             <ul id="wiki-loop-list">
             </ul>
         </div>
-        
-        <script type="text/javascript" src="{{ url_for('static', filename='looper.min.js') }}"></script>
+
+        <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
     </body>
 </html>

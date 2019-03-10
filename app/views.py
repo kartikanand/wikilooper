@@ -13,4 +13,6 @@ def loop_request():
     else:
         str_type = str
     link = request.args.get('link', '', type=str_type)
-    return getNextLink(link.strip())
+    skips = request.args.get('skips', '', type=int)
+
+    return getNextLink(link.strip(), skips)
