@@ -34,6 +34,9 @@ function wikiLoop(link) {
         } else if (link == '--ERROR--') {
             addToList('Something went wrong');
             return;
+        } else if (link == '--LOOP--') {
+            addToList('Too many loops');
+            return;
         }
 
         addToList(link);
@@ -48,6 +51,13 @@ function wikiLoop(link) {
 
 
 function getNextLink(link, skips) {
+    // don't handle too many loops
+    if (skips == 5) {
+        wikiLoop('--LOOP--');
+
+        return;
+    }
+
     let xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function () {
         if (xmlHttp.readyState === 4) {
