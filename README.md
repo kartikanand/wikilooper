@@ -1,22 +1,16 @@
-# wikilooper
-Wikilooper web version
+# WikiLooper
 
-### View Demo at
-[Wikilooper](http://wikilooper.herokuapp.com/)
+Follow the first link in the main text of a Wikipedia article, then repeat on each new article. You'll usually end up at **Philosophy**, unless you hit a dead end or a loop. See [xkcd 903](https://xkcd.com/903/).
 
-### Description
-Clicking on the first link in the main text of a Wikipedia article, and then repeating the process for subsequent articles, one would  eventually get to the Philosophy article. 
-Unless there is an article with no wikilinks or with links to pages that do not exist, or gets stuck in a loop. By entering the first article, wikilooper will take you through the links one would encounter until it reaches Philosophy or gets stuck in a loop.
+**Live:** https://kartikanand.github.io/wikilooper/
 
-### XKCD
-Relevant XKCD article -> [Extended Mind](http://xkcd.com/903/)
+A static, framework-free site (native ES modules, modern CSS). It runs entirely in the browser and uses the Wikimedia Action API (`action=parse`, CORS via `origin=*`). There is no backend or build step.
 
-### Requirements
-- beautifulsoup4==4.3.2
-- Flask==0.10.1
-- gunicorn==19.3.0
-- itsdangerous==0.24
-- Jinja2==2.7.3
-- MarkupSafe==0.23
-- requests==2.6.0
-- Werkzeug==0.10.4
+## Develop
+
+```sh
+npm start   # serves on http://localhost:8000
+npm test    # unit tests for the pure link helpers (node --test)
+```
+
+Pushes to `main` deploy to GitHub Pages.
