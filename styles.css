@@ -1,0 +1,65 @@
+:root {
+  color-scheme: dark light;
+  --bg: light-dark(#fafaf7, #141414);
+  --fg: light-dark(#1d1d1d, #ececec);
+  --muted: light-dark(#666, #9a9a9a);
+  --accent: light-dark(#b8860b, #fbc93d);
+  --link: light-dark(#c62f2f, #ff6b6b);
+  --surface: light-dark(#fff, #1f1f1f);
+  --border: light-dark(#d8d8d2, #333);
+  --ok: light-dark(#1a7f37, #56d364);
+  --err: light-dark(#c62f2f, #ff7b72);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 1rem/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+main { max-width: 42rem; margin: 0 auto; padding: clamp(1.5rem, 6vw, 4rem) 1rem; }
+
+header { text-align: center; margin-block-end: 2rem; }
+h1 { margin: 0; color: var(--accent); font: 700 clamp(2rem, 8vw, 3.25rem)/1.1 Georgia, "Times New Roman", serif; }
+.tagline { margin: .5rem 0 0; color: var(--muted); }
+
+label { display: block; margin-block-end: .35rem; font-weight: 600; }
+.row { display: flex; gap: .5rem; }
+
+input, button {
+  font: inherit;
+  padding: .6rem .9rem;
+  border: 1px solid var(--border);
+  border-radius: .5rem;
+}
+input { flex: 1; min-width: 0; background: var(--surface); color: inherit; }
+button { background: var(--accent); color: #141414; font-weight: 600; border-color: transparent; cursor: pointer; }
+button:disabled { opacity: .5; cursor: progress; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+a { color: var(--link); text-underline-offset: .2em; }
+
+#status { min-height: 1.6em; margin: 1.25rem 0 .5rem; color: var(--muted); }
+#status[data-state=done] { color: var(--ok); }
+#status[data-state=error] { color: var(--err); }
+
+#path { list-style: none; margin: 0; padding: 0; counter-reset: hop; }
+#path li {
+  counter-increment: hop;
+  display: flex; gap: .75rem; align-items: baseline;
+  padding: .5rem .75rem; margin-block-end: .35rem;
+  background: var(--surface); border: 1px solid var(--border); border-radius: .5rem;
+  font-size: 1.15rem;
+  animation: in .25s ease-out;
+}
+#path li::before { content: counter(hop); min-width: 1.5em; color: var(--muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
+#path li[aria-current] { border-color: var(--accent); }
+
+details { margin-block-start: 2rem; color: var(--muted); }
+summary { cursor: pointer; }
+
+@keyframes in { from { opacity: 0; transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) { #path li { animation: none; } }

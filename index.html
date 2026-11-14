@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src https://en.wikipedia.org; base-uri 'none'; form-action 'none'">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="Follow the first link of any Wikipedia article until you reach Philosophy.">
+  <title>WikiLooper</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="src/main.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>WikiLooper</h1>
+      <p class="tagline">All paths lead to Philosophy (or don’t)</p>
+    </header>
+
+    <form id="form" autocomplete="off">
+      <label for="start">Starting article</label>
+      <div class="row">
+        <input id="start" name="start" type="text" placeholder="Computer, Python, …" required spellcheck="false">
+        <button type="submit">Start</button>
+      </div>
+    </form>
+
+    <p id="status" role="status" aria-live="polite"></p>
+    <ol id="path"></ol>
+
+    <details id="about">
+      <summary>About</summary>
+      <p>Click the first link in the main text of a Wikipedia article, then repeat on each new article, and you’ll usually end up at <em>Philosophy</em> — unless you hit an article with no valid links, or get stuck in a loop. See <a href="https://xkcd.com/903/" rel="noopener noreferrer">xkcd 903</a>.</p>
+      <p>Everything runs in your browser using the Wikimedia API.</p>
+    </details>
+  </main>
+</body>
+</html>
